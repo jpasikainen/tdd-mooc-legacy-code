@@ -56,8 +56,6 @@ class Shop {
           } else {
             this.items[i].quality = 0;
           }
-        } else {
-          
         }
       }
     }
