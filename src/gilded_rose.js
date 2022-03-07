@@ -1,8 +1,9 @@
 class Item {
-  constructor(name, sellIn, quality) {
+  constructor(name, sellIn, quality, conjured = false) {
     this.name = name;
     this.sellIn = sellIn;
     this.quality = quality;
+    this.conjured = conjured;
   }
 }
 
@@ -18,7 +19,12 @@ class Shop {
 
   decreaseQuality(idx) {
     const quality = this.items[idx].quality;
-    if (quality > 0) this.items[idx].quality = quality - 1;
+    if (quality > 0) {
+      let decrease = 1;
+      const conjured = this.items[idx].conjured;
+      if (conjured) decrease = 2;
+      this.items[idx].quality = quality - decrease;
+    }
   }
 
   backstagePassQualityIncrease(idx) {
