@@ -15,17 +15,19 @@ describe("Gilded Rose", function () {
   });
 
   it("Once the sell by date has passed, Quality degrades twice as fast", () => {
-    const gildedRose = new Shop([new Item("foo", 0, 5), new Item("", 0, 5), new Item("Sulfuras, Hand of Ragnaros", -1, 5)]);
+    const gildedRose = new Shop([new Item("foo", 0, 5, true), new Item("", 0, 5), new Item("Sulfuras, Hand of Ragnaros", -1, 5)]);
     const items = gildedRose.updateQuality();
-    expect(items[0].quality).to.equal(3);
+    expect(items[0].quality).to.equal(1);
     expect(items[1].quality).to.equal(3);
     expect(items[2].quality).to.equal(5);
   });
 
   it("The Quality of an item is never negative", () => {
-    const gildedRose = new Shop([new Item("foo", 0, 0)]);
+    const gildedRose = new Shop([new Item("foo", 0, 0), new Item("foo", 2, 2), new Item("foo", 1, 3)]);
     const items = gildedRose.updateQuality();
     expect(items[0].quality).to.equal(0);
+    expect(items[1].quality).to.equal(1);
+    expect(items[2].quality).to.equal(2);
   });
 
   it("Aged Brie actually increases in Quality the older it gets", () => {
@@ -60,11 +62,11 @@ describe("Gilded Rose", function () {
   });
 
   it("Quality drops to 0 after the concert", () => {
-    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 0, 5), new Item("Backstage passes to a TAFKAL80ETC concert", 0, 49),
+    const gildedRose = new Shop([new Item("Backstage passes to a TAFKAL80ETC concert", 1, 5), new Item("Backstage passes to a TAFKAL80ETC concert", 0, 49),
     new Item("Backstage passes to a TAFKAL80ETC concert", 0, 5), new Item("Backstage passes to a TAFKAL80ETC concert", 6, 5),
     new Item("Backstage passes to a TAFKAL80ETC concert", 10, 49), new Item("Backstage passes to a TAFKAL80ETC concert", 5, 49)]);
     const items = gildedRose.updateQuality();
-    expect(items[0].quality).to.equal(0);
+    expect(items[0].quality).to.equal(8);
     expect(items[1].quality).to.equal(0);
     expect(items[2].quality).to.equal(0);
     expect(items[3].quality).to.equal(7);
