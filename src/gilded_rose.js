@@ -36,9 +36,6 @@ class Shop {
         this.backstagePassQualityIncrease(i);
       }
       if (this.items[i].name != "Aged Brie" && this.items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
-        if (this.items[i].name != "Sulfuras, Hand of Ragnaros") {
-          this.decreaseQuality(i);
-        }
       } else {
         this.increaseQuality(i);
       }
@@ -55,11 +52,11 @@ class Shop {
             break;
           case "Sulfuras, Hand of Ragnaros":
             break;
-          default:  
+          default:
+            this.decreaseQuality(i);
             this.decreaseQuality(i);
             break;
         }
-
       }
     }
 
