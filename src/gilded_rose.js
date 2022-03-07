@@ -16,12 +16,17 @@ class Shop {
     if (quality < 50) this.items[idx].quality = quality + 1;
   }
 
+  decreaseQuality(idx) {
+    const quality = this.items[idx].quality;
+    if (quality > 0) this.items[idx].quality = quality - 1;
+  }
+
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
       if (this.items[i].name != "Aged Brie" && this.items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
         if (this.items[i].quality > 0) {
           if (this.items[i].name != "Sulfuras, Hand of Ragnaros") {
-            this.items[i].quality = this.items[i].quality - 1;
+            this.decreaseQuality(i);
           }
         }
       } else {
