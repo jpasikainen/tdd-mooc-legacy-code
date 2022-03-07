@@ -32,23 +32,22 @@ class Shop {
 
   updateQuality() {
     for (var i = 0; i < this.items.length; i++) {
-      if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
-        this.backstagePassQualityIncrease(i);
-      }
-      this.items[i].sellIn -= 1;
       switch (this.items[i].name) {
         case "Aged Brie":
+          this.items[i].sellIn -= 1;  
           this.increaseQuality(i);
           if (this.items[i].sellIn < 0) this.increaseQuality(i);
           break;
         case "Backstage passes to a TAFKAL80ETC concert":
+          this.backstagePassQualityIncrease(i);
+          this.items[i].sellIn -= 1;
           this.increaseQuality(i);
           if (this.items[i].sellIn < 0) this.items[i].quality = 0;
           break;
         case "Sulfuras, Hand of Ragnaros":
-          this.items[i].sellIn += 1;
           break;
         default:
+          this.items[i].sellIn -= 1;
           if (this.items[i].sellIn < 0) this.decreaseQuality(i);
           this.decreaseQuality(i);
           break;
