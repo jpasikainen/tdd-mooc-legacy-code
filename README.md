@@ -1,3 +1,11 @@
+# Mutation test results
+Ran 1.45 tests per mutant on average.
+File            | % score | # killed | # timeout | # survived | # no cov | # error |
+----------------|---------|----------|-----------|------------|----------|---------|
+All files       |  100.00 |       56 |         0 |          0 |        0 |       0 |
+ gilded_rose.js |  100.00 |       56 |         0 |          0 |        0 |       0 |
+
+
 # [TDD MOOC](https://tdd.mooc.fi/): Legacy code
 
 This is an exercise to practice dealing with legacy code. There are three things you need to do:
