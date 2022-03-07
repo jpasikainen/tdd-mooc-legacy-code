@@ -35,9 +35,6 @@ class Shop {
       if (this.items[i].name == "Backstage passes to a TAFKAL80ETC concert") {
         this.backstagePassQualityIncrease(i);
       }
-      if (this.items[i].name === "Aged Brie" || this.items[i].name === "Backstage passes to a TAFKAL80ETC concert") {
-        
-      }
       if (this.items[i].name != "Sulfuras, Hand of Ragnaros") {
         this.items[i].sellIn -= 1;
       }
